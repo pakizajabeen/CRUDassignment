@@ -110,6 +110,23 @@ public class EmployeeService implements ServiceClass<Employee> {
 	}
 	
 	
+	// get the list of employees name and show their office location
+	
+	public List<Employee> usingJoin2()
+	{
+		
+
+		TypedQuery<Employee> query = entityManager.createQuery(
+				"SELECT e.name, o.location FROM employee e cross join office o ON e.id=o.emp_id;", Employee.class);
+		
+		List<Employee> resultList = query.getResultList();
+		
+		return resultList;
+				
+		
+	}
+		
+	
 	
 	
 	

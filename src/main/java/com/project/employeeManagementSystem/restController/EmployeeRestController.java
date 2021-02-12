@@ -100,6 +100,14 @@ public class EmployeeRestController {
 		
 		return employeeService.usingJoin();
 	}
+	
+	// get the list of employees name and show their office location
+	
+	@GetMapping("/employeesusingcrossjoin")
+	public List<Employee> getEmployeesUsingleftJoins2() {
+		
+		return employeeService.usingJoin2();
+	}
     
 
 }

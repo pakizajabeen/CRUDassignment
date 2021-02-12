@@ -10,74 +10,62 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name  = "emp_type")
-public class EmployeeType {
+@Table(name ="office")
+public class Office {
 	
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	
-	@Column(name ="name")
-	private String emp_type;
-	
-	@Column(name ="description")
-	private String description;
-	
+	@Column(name ="location")
+	private String location;
 	
 	@OneToMany(targetEntity = Employee.class, mappedBy = "id", fetch = FetchType.LAZY)
 	private Employee employee;
-
-	public EmployeeType()
+	
+	
+	public Office()
 	{
 		
 	}
 
-	public EmployeeType(String emp_type, String description, Employee employee) {
-		super();
-		this.emp_type = emp_type;
-		this.description = description;
+
+	public Office(String location, Employee employee) {
+		this.location = location;
 		this.employee = employee;
 	}
+
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getEmp_type() {
-		return emp_type;
+
+	public String getLocation() {
+		return location;
 	}
 
-	public void setEmp_type(String emp_type) {
-		this.emp_type = emp_type;
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public Employee getEmployee() {
 		return employee;
 	}
 
+
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+	
+	
 
-	@Override
-	public String toString() {
-		return "EmployeeType [ emp_type=" + emp_type + ", description=" + description + ", employee="
-				+ employee + "]";
-	}
-	
-	
 }

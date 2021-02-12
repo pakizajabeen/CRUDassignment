@@ -52,6 +52,11 @@ public class Employee implements Serializable {
 	@Fetch(FetchMode.JOIN)
 	private EmployeeType employeeType;
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "emp_id", insertable = false, updatable = false)
+	@Fetch(FetchMode.JOIN)
+	private Office office;
+	
 	public Employee ()
 	{
 		
@@ -126,6 +131,23 @@ public class Employee implements Serializable {
 
 	public void setEmployeeType(EmployeeType employeeType) {
 		this.employeeType = employeeType;
+	}
+
+
+	public Office getOffice() {
+		return office;
+	}
+
+
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", email=" + email + ", address=" + address + ", salary="
+				+ salary + ", department=" + department + ", employeeType=" + employeeType + ", office=" + office + "]";
 	}
 	
 	
